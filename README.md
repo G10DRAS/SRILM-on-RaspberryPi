@@ -12,7 +12,7 @@ Once this is done, you need to create a file ```srilm-1.7.1/common/Makefile.mach
 ```cd ~/srilm-1.7.1/common```<br />
 ```cp Makefile.machine.i686 Makefile.machine.armv7l```<br />
 
-And delete all the flags of the line ```GCC_FLAGS``` not begin with ```-W```. The line will looks like below:
+And delete all the flags of the line ```GCC_FLAGS``` not begin with ```-W```. After the changes, line will looks like as follows:
 
 ```GCC_FLAGS=-Wall -Wno-unused-variable -Wno-uninitialized```<br /> 
 
