@@ -1,7 +1,7 @@
 # SRILM-on-RaspberryPi
 Compile SRILM on the RPi2B (Raspbian-Whizzy)
 
-Although ```SRILM``` is in C++, the compilation of ```SRILM``` requires knowledge of the type of machine which is to define certain variables pointing to necessary libraries. To do this, it provides a script ```sbin/machine-type``` that returns the type of machine from the output of the command ```uname -a```. The script has an internal list of machine type, which is used to define some variables or other. As expected, the machine type ```armv7l``` is not listed, so this script gave an error. To solve this, it was necessary to modify the script ```sbin/machine-type``` so that it will return a correct machine type (in our case, ```armv7l```). To do this, simply include machine type ```armv7l``` in the `uname -m` case statement as follows:
+Although ```SRILM``` is in C++, the compilation of ```SRILM``` requires knowledge of the type of machine which is to define certain variables pointing to necessary libraries. To do this, it provides a script ```sbin/machine-type``` that returns the type of machine from the output of the command ```uname -a```. The script has an internal list of machine type, which is used to define some variables or other. As expected, the machine type ```armv7l``` is not listed, so this script gave an error. To solve this, it is necessary to modify the script ```sbin/machine-type``` so that it will return a correct machine type (in our case, ```armv7l```). To do this, simply include machine type ```armv7l``` in the `uname -m` case statement as follows:
 
 ```case "`uname -m`" in```
 ```armv7l) MACHINE_TYPE=armv7l```
