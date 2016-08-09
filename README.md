@@ -1,12 +1,11 @@
 # SRILM-on-RaspberryPi
 Compile SRILM on the RPi2B (Raspbian-Whizzy)
 
-Compilation of SRILM in the Raspberry Pi:
+Although ```SRILM``` is in C++, the compilation of ```SRILM``` requires knowledge of the type of machine which is to define certain variables pointing to necessary libraries. To do this, it provides a script ```sbin/machine-type``` that returns the type of machine from the output of the command ```uname -a```. The script has an internal list of machine type, which is used to define some variables or other. As expected, the machine type ```armv7l``` is not listed, so this script gave an error. To solve this, it was necessary to modify the script ```sbin/machine-type``` so that it will return a correct machine type (in our case, ```armv7l```). To do this, simply include machine type ```armv7l``` in the `uname -m` case statement as follows:
 
-Although it is in C++, the program compilation SRILM requires knowledge of the type of machine which is to define certain variables pointing to libraries necessary. To do this, it provides a script sbin/machine-type that returns the type of machine from the output of the command uname -a. The output of this script is a type of machine has an internal list that the program, which is then used to define some variables or other. As expected, the machine type "Raspberry Pi" was not listed, so this script gave an error. To solve this, it was necessary to modify the script sbin/machine-type making return a given string (in our case, "armv7l") when the machine out Raspberry Pi. To do this, simply include in the case `uname -m` in the following case:
-
-armv7l) MACHINE_TYPE=armv7l
-;; 
+```case "`uname -m`" in```
+```armv7l) MACHINE_TYPE=armv7l```
+```;;```
 
 Once this is done, you need to create a file in common/Makefile.machine.armvl64 with the variables corresponding to the Raspberry Pi. The easiest way to do this is to copy the file common/Makefile.machine.i686
 
