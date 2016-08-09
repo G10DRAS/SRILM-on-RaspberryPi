@@ -3,11 +3,6 @@ How to compile SRILM (srilm-1.7.1) on the RPi2B (Rasbian-Whizzy)
 
 Although ```SRILM Toolkit``` is in C++, the compilation of ```SRILM``` requires knowledge of the type of machine which is to define certain variables pointing to necessary libraries. To do this, it provides a script ```srilm-1.7.1/sbin/machine-type``` that returns the type of machine from the output of the command ```uname -a```. The script has an internal list of machine type, which is used to define some variables or other. As expected, the machine type ```armv7l``` is not listed, so this script gave an error. To solve this, it is necessary to modify the script ```srilm-1.7.1/sbin/machine-type``` so that it will return a correct machine type (in our case, ```armv7l```). To do this, simply include machine type ```armv7l``` in the `uname -m` case statement as follows:<br />
 
-License: To install, you will also need a copy of the `SRILM toolkit`_, for which you will need a license from
-SRI.
-
-.. _`SRILM toolkit`: http://www.speech.sri.com/projects/srilm/
-
 ```case "`uname -m`" in```<br />
 ```armv7l) MACHINE_TYPE=armv7l```<br />
 
@@ -45,3 +40,6 @@ The following command will compile ```SRILM``` and verify the installation. <br 
 ```cd ~/srilm-1.7.1```<br />
 ```make World```<br />
 ```make test``` <br />
+
+License: To install, you will also need a copy of the `SRILM Toolkit`(http://www.speech.sri.com/projects/srilm/), 
+for which you will need a license from SRI.
